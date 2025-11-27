@@ -1,35 +1,55 @@
 package kr.persnol.color.PC;
 
-import jakarta.persistence.*;
+import jakarta.persistence.*; // @Entity, @Table, @Id, @GeneratedValue, @Column, @Enumerated, EnumType
 
 @Entity
 @Table(name = "cosmetic")
 public class Cosmetic {
 
     @Id
-    @Enumerated(EnumType.STRING)
-    @Column(name = "personal_color_type")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  // PK: 자동 증가 Long
+    private Long id;
+
+    @Enumerated(EnumType.STRING)                         // enum → 문자열로 저장
+    @Column(name = "personal_color_type", nullable = false)
     private Personal_Color_Type personalColorType;
 
-    @Column(name = "type", nullable = false)  // 립 / 블러셔 / 파데 등
-    private String type;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "category", nullable = false)
+    private CosmeticCategory category;                   // LIP / BLUSH / HIGHLIGHTER
 
-    @Column(name = "product_name", nullable = false)
-    private String productName;
+    @Column(name = "name", nullable = false)
+    private String name;                                 // 코랄립, 복숭아 블러셔 등
 
-    protected Cosmetic() {
-        new Cosmetic(Personal_Color_Type.SPRING_WARM, "LIP", "코랄립");
-        new Cosmetic(Personal_Color_Type.SUMMER_COOL, "LIP", "로즈톤립");
-        new Cosmetic(Personal_Color_Type.AUTUMN_WARM, "LIP", "브릭립");
-        new Cosmetic(Personal_Color_Type.WINTER_COOL, "LIP", "푸사이핑크립");
-        new Cosmetic(Personal_Color_Type.SUMMER_COOL, "BLUSH", "브릭 코랄 블러셔");
-        new Cosmetic(Personal_Color_Type.AUTUMN_WARM, "FOUNDATION", "웜톤 파운데이션 21호");
+    // JPA용 기본 생성자 → 비워두는 게 정석
+    protected Cosmetic(
 
+    ) {
     }
 
-    public Cosmetic(Personal_Color_Type personalColorType, String type, String productName) {
+    // 우리가 직접 사용할 생성자
+    public Cosmetic(Personal_Color_Type personalColorType,
+                    CosmeticCategory category,
+                    String name) {
         this.personalColorType = personalColorType;
-        this.type = type;
-        this.productName = productName;
+        this.category = category;
+        this.name = name;
+    }
+
+    // 필요하면 getter 추가
+    public Long getId() {
+        return id;
+    }
+
+    public Personal_Color_Type getPersonalColorType() {
+        return personalColorType;
+    }
+
+    public CosmeticCategory getCategory() {
+        return category;
+    }
+
+    public String getName() {
+        return name;
     }
 }

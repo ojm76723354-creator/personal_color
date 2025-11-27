@@ -14,7 +14,7 @@ public class ClothesColor {
     @Column(name = "color", nullable = false)
     private String color;
 
-    public ClothesColor() {
+    protected ClothesColor() {
         new ClothesColor(Personal_Color_Type.SPRING_WARM, "연핑크");
         new ClothesColor(Personal_Color_Type.SPRING_WARM, "코랄");
         new ClothesColor(Personal_Color_Type.SPRING_WARM, "라이트옐로우");
