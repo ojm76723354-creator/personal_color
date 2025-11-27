@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>퍼스널 컬러 설문</title>
+</head>
+<body>
+<h1>퍼스널 컬러 설문</h1>
+
+<form>
+    <div th:each="q : ${questions}">
+        <h3 th:text="${q.text}">질문 내용</h3>
+
+        <div th:each="opt : ${q.options}">
+            <label>
+                <input type="radio"
+                       th:name="${'q' + q.id}"
+                       th:value="${opt.code}"/>
+                <span th:text="${opt.text}">보기</span>
+            </label>
+        </div>
+
+        <hr/>
+    </div>
+
+    <button type="submit">제출</button>
+</form>
+
+</body>
+</html>
