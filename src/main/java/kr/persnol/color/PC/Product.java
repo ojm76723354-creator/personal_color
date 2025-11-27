@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 public class Product {
-    //테스트 주석
+
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

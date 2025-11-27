@@ -13,7 +13,7 @@ public class Option {
     public Option(String code, String text) {
         this.code = code;
         this.text = text;
-        this.scoreMap = new EnumMap<>(PersonalColorType.class);
+        this.scoreMadp = new EnumMap<>(PersonalColorType.class);
     }
 
 public void addScore(PersonalColorType type, int score) {
