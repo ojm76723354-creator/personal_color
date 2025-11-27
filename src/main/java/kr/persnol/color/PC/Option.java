@@ -8,15 +8,15 @@ public class Option {
     private String text;
 
 
-    private Map<PersonalColorType, Integer> scoreMap;
+    private Map<Personal_Color_Type, Integer> scoreMap;
 
     public Option(String code, String text) {
         this.code = code;
         this.text = text;
-        this.scoreMap = new EnumMap<>(PersonalColorType.class);
+        this.scoreMap = new EnumMap<>(Personal_Color_Type.class);
     }
 
-public void addScore(PersonalColorType type, int score) {
+public void addScore(Personal_Color_Type type, int score) {
         int current = scoreMap.getOrDefault(type, 0);
         scoreMap.put(type, current + score);
 }
@@ -30,7 +30,7 @@ public void addScore(PersonalColorType type, int score) {
         return text;
     }
 
-    public Map<PersonalColorType, Integer> getScoreMap() {
+    public Map<Personal_Color_Type, Integer> getScoreMap() {
         return scoreMap;
     }
 }
