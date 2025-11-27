@@ -1,6 +1,7 @@
 package kr.persnol.color.PC;
     import java.util.EnumMap;
     import java.util.EnumMap;
+    import java.util.HashMap;
     import java.util.Map;
 public class Option {
 
@@ -13,7 +14,7 @@ public class Option {
     public Option(String code, String text) {
         this.code = code;
         this.text = text;
-        this.scoreMap = new EnumMap<>(Personal_Color_Type.class);
+        this.scoreMap = new HashMap<Personal_Color_Type,Integer>();
     }
 
 public void addScore(Personal_Color_Type type, int score) {
