@@ -7,30 +7,34 @@ import jakarta.persistence.*;
 public class HairColor {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @Enumerated(EnumType.STRING)
-    @Column(name = "personal_color_type")
+    @Column(name = "personal_color_type", nullable = false)
     private Personal_Color_Type personalColorType;
 
     @Column(name = "color", nullable = false)
     private String color;
 
     protected HairColor() {
-        new HairColor(Personal_Color_Type.SPRING_WARM, "라이트브라운");
-        new HairColor(Personal_Color_Type.SPRING_WARM, "골든브라운");
-        new HairColor(Personal_Color_Type.SPRING_WARM, "꿀브라운");
-        new HairColor(Personal_Color_Type.SUMMER_COOL, "애쉬브라운");
-        new HairColor(Personal_Color_Type.SUMMER_COOL, "라이트애쉬");
-        new HairColor(Personal_Color_Type.SUMMER_COOL, "블루블랙");
-        new HairColor(Personal_Color_Type.AUTUMN_WARM, "다크브라운");
-        new HairColor(Personal_Color_Type.AUTUMN_WARM, "초코브라운");
-        new HairColor(Personal_Color_Type.AUTUMN_WARM, "구리빛");
-        new HairColor(Personal_Color_Type.WINTER_COOL, "블루블랙");
-        new HairColor(Personal_Color_Type.WINTER_COOL, "진한애쉬");
-        new HairColor(Personal_Color_Type.WINTER_COOL, "와인컬러");
+        // JPA용 기본 생성자 – 비워둡니다.
     }
 
     public HairColor(Personal_Color_Type personalColorType, String color) {
         this.personalColorType = personalColorType;
         this.color = color;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Personal_Color_Type getPersonalColorType() {
+        return personalColorType;
+    }
+
+    public String getColor() {
+        return color;
     }
 }

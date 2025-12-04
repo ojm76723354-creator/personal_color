@@ -19,35 +19,8 @@ public class Product {
     @Column(name = "price")
     private int price;
 
-    public long getId() {
-        return id;
+    protected Product() {
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getBland() {
-        return bland;
-    }
-
-    public void setBland(String bland) {
-        this.bland = bland;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
+    // getter / setter ...
 }
