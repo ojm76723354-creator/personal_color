@@ -31,7 +31,6 @@
         ul {
             list-style-type: none;
             padding: 0;
-            margin: 10px 0;
         }
 
         li {
@@ -42,25 +41,9 @@
             margin-bottom: 10px;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
         }
-
         span {
             font-weight: bold;
             color: #E74C3C;
-        }
-
-        .score-container {
-            margin-top: 30px;
-            padding: 15px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 80%;
-            margin: 0 auto;
-        }
-
-        .score-container p {
-            font-size: 18px;
-            margin: 10px 0;
         }
 
         .container {
@@ -70,14 +53,33 @@
             margin: 0 20px;
         }
 
-        .result-section {
-            margin-top: 30px;
+        /* 일관된 너비를 설정하기 위해 .result-section과 .score-container에 동일한 max-width 설정 */
+        .result-section, .score-container {
             width: 100%;
             max-width: 900px;
             padding: 20px;
             background-color: #ffffff;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .score-container p {
+            font-size: 18px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .score-label {
+            font-weight: bold;
+            color: #4A90E2;
+            width: 180px; /* 레이블 크기 고정 */
+        }
+
+        .score-value {
+            font-weight: normal;
+            color: #333;
         }
 
         .button {
@@ -137,10 +139,10 @@
     <!-- 점수 출력 -->
     <div class="score-container">
         <h3>퍼스널컬러 점수:</h3>
-        <p>봄웜 점수: <span th:text="${springWarmScore}">0</span></p>
-        <p>여름쿨 점수: <span th:text="${summerCoolScore}">0</span></p>
-        <p>가을웜 점수: <span th:text="${autumnWarmScore}">0</span></p>
-        <p>겨울쿨 점수: <span th:text="${winterCoolScore}">0</span></p>
+        <p><span class="score-label">봄웜 점수:</span><span class="score-value" th:text="${springWarmScore}">0</span></p>
+        <p><span class="score-label">여름쿨 점수:</span><span class="score-value" th:text="${summerCoolScore}">0</span></p>
+        <p><span class="score-label">가을웜 점수:</span><span class="score-value" th:text="${autumnWarmScore}">0</span></p>
+        <p><span class="score-label">겨울쿨 점수:</span><span class="score-value" th:text="${winterCoolScore}">0</span></p>
     </div>
 
     <a href="/survey" class="button">다시 설문 참여</a>
