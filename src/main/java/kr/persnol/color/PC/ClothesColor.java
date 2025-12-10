@@ -7,7 +7,8 @@ import jakarta.persistence.*;
 public class ClothesColor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)   // PK: 자동 증가 ID
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Enumerated(EnumType.STRING)
@@ -17,24 +18,37 @@ public class ClothesColor {
     @Column(name = "color", nullable = false)
     private String color;
 
-    protected ClothesColor() {
-        // JPA용 기본 생성자 – 비워둡니다.
-    }
+    // 기본 생성자 (JPA 리플렉션용)
+    public ClothesColor() {}
 
+    // 사용자 정의 생성자
     public ClothesColor(Personal_Color_Type personalColorType, String color) {
         this.personalColorType = personalColorType;
         this.color = color;
     }
 
+    // Getter and Setter
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Personal_Color_Type getPersonalColorType() {
         return personalColorType;
     }
 
+    public void setPersonalColorType(Personal_Color_Type personalColorType) {
+        this.personalColorType = personalColorType;
+    }
+
     public String getColor() {
         return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 }

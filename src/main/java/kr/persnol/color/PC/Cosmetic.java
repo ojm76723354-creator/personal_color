@@ -1,55 +1,66 @@
 package kr.persnol.color.PC;
 
-import jakarta.persistence.*; // @Entity, @Table, @Id, @GeneratedValue, @Column, @Enumerated, EnumType
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "cosmetic")
 public class Cosmetic {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  // PK: 자동 증가 Long
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Enumerated(EnumType.STRING)                         // enum → 문자열로 저장
+    @Enumerated(EnumType.STRING)
     @Column(name = "personal_color_type", nullable = false)
     private Personal_Color_Type personalColorType;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "category", nullable = false)
-    private CosmeticCategory category;                   // LIP / BLUSH / HIGHLIGHTER
+    private CosmeticCategory category;
 
     @Column(name = "name", nullable = false)
-    private String name;                                 // 코랄립, 복숭아 블러셔 등
+    private String name;
 
-    // JPA용 기본 생성자 → 비워두는 게 정석
-    protected Cosmetic(
+    // 기본 생성자 (JPA 리플렉션용)
+    public Cosmetic() {}
 
-    ) {
-    }
-
-    // 우리가 직접 사용할 생성자
-    public Cosmetic(Personal_Color_Type personalColorType,
-                    CosmeticCategory category,
-                    String name) {
+    // 사용자 정의 생성자
+    public Cosmetic(Personal_Color_Type personalColorType, CosmeticCategory category, String name) {
         this.personalColorType = personalColorType;
         this.category = category;
         this.name = name;
     }
 
-    // 필요하면 getter 추가
+    // Getter and Setter
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Personal_Color_Type getPersonalColorType() {
         return personalColorType;
     }
 
+    public void setPersonalColorType(Personal_Color_Type personalColorType) {
+        this.personalColorType = personalColorType;
+    }
+
     public CosmeticCategory getCategory() {
         return category;
     }
 
+    public void setCategory(CosmeticCategory category) {
+        this.category = category;
+    }
+
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

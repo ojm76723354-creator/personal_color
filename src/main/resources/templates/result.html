@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>추천 결과</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            color: #4A90E2;
+        }
+
+        h2 {
+            color: #2C3E50;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #16A085;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+
+        li {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        span {
+            font-weight: bold;
+            color: #E74C3C;
+        }
+
+        .score-container {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .score-container p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 20px;
+        }
+
+        .result-section {
+            margin-top: 30px;
+            width: 100%;
+            max-width: 900px;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 30px;
+            background-color: #4A90E2;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .button:hover {
+            background-color: #357ABD;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>추천 결과</h1>
+
+    <!-- 퍼스널컬러 출력 -->
+    <div class="result-section">
+        <h2>퍼스널컬러: <span th:text="${personalColor.personalColorType}">퍼스널컬러</span></h2>
+    </div>
+
+    <div class="result-section">
+        <h3>추천 옷 색상:</h3>
+        <ul>
+            <li th:each="clothes : ${clothes}">
+                <span th:text="${clothes.color}">옷 색상</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="result-section">
+        <h3>추천 헤어 색상:</h3>
+        <ul>
+            <li th:each="hair : ${hair}">
+                <span th:text="${hair.color}">헤어 색상</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="result-section">
+        <h3>추천 화장품:</h3>
+        <ul>
+            <li th:each="cosmetic : ${cosmetics}">
+                <span th:text="${cosmetic.name}">화장품</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 점수 출력 -->
+    <div class="score-container">
+        <h3>퍼스널컬러 점수:</h3>
+        <p>봄웜 점수: <span th:text="${springWarmScore}">0</span></p>
+        <p>여름쿨 점수: <span th:text="${summerCoolScore}">0</span></p>
+        <p>가을웜 점수: <span th:text="${autumnWarmScore}">0</span></p>
+        <p>겨울쿨 점수: <span th:text="${winterCoolScore}">0</span></p>
+    </div>
+
+    <a href="/survey" class="button">다시 설문 참여</a>
+</div>
+
+</body>
+</html>

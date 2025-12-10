@@ -1,30 +1,266 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>퍼스널 컬러 설문</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            color: #4A90E2;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 20px;
+        }
+
+        .survey-section {
+            margin-top: 30px;
+            width: 100%;
+            max-width: 900px;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .survey-section h3 {
+            color: #16A085;
+        }
+
+        .survey-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .survey-section label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .survey-section input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 30px;
+            background-color: #4A90E2;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .button:hover {
+            background-color: #357ABD;
+        }
+    </style>
 </head>
 <body>
-<h1>퍼스널 컬러 설문</h1>
 
-<form>
-    <div th:each="q : ${questions}">
-        <h3 th:text="${q.text}">질문 내용</h3>
+<div class="container">
+    <h1>퍼스널 컬러 설문</h1>
 
-        <div th:each="opt : ${q.options}">
-            <label>
-                <input type="radio"
-                       th:name="${'q' + q.id}"
-                       th:value="${opt.code}"/>
-                <span th:text="${opt.text}">보기</span>
-            </label>
+    <form action="/survey/result" method="post">
+        <!-- 질문 1 -->
+        <div class="survey-section">
+            <h3>밝은 조명을 받으면 얼굴이 더 생기 있어 보이나요?</h3>
+            <ul>
+                <li>
+                    <label>
+                        <input type="radio" name="1" value="Y"> 어울린다
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" name="1" value="N"> 어울리지 않는다
+                    </label>
+                </li>
+            </ul>
         </div>
 
-        <hr/>
-    </div>
+        <!-- 질문 2 -->
+        <div class="survey-section">
+            <h3>차가운 색조가 나에게 더 잘 어울리나요?</h3>
+            <ul>
+                <li>
+                    <label>
+                        <input type="radio" name="2" value="Y"> 어울린다
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" name="2" value="N"> 어울리지 않는다
+                    </label>
+                </li>
+            </ul>
+        </div>
 
-    <button type="submit">제출</button>
-</form>
+        <!-- 질문 3 -->
+        <div class="survey-section">
+            <h3>어두운 색이 나에게 잘 어울리나요?</h3>
+            <ul>
+                <li>
+                    <label>
+                        <input type="radio" name="3" value="Y"> 어울린다
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" name="3" value="N"> 어울리지 않는다
+                    </label>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 질문 4 -->
+        <div class="survey-section">
+            <h3>화려한 색을 선호하나요?</h3>
+            <ul>
+                <li>
+                    <label>
+                        <input type="radio" name="4" value="Y"> 어울린다
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" name="4" value="N"> 어울리지 않는다
+                    </label>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 질문 5 -->
+        <div class="survey-section">
+            <h3>피부 톤이 핑크 계열인가요?</h3>
+            <ul>
+                <li>
+                    <label>
+                        <input type="radio" name="5" value="Y"> 어울린다
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" name="5" value="N"> 어울리지 않는다
+                    </label>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 질문 6 -->
+        <div class="survey-section">
+            <h3>따뜻한 색조가 나에게 잘 어울리나요?</h3>
+            <ul>
+                <li>
+                    <label>
+                        <input type="radio" name="6" value="Y"> 어울린다
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" name="6" value="N"> 어울리지 않는다
+                    </label>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 질문 7 -->
+        <div class="survey-section">
+            <h3>블루 계열 색상에 더 잘 어울리나요?</h3>
+            <ul>
+                <li>
+                    <label>
+                        <input type="radio" name="7" value="Y"> 어울린다
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" name="7" value="N"> 어울리지 않는다
+                    </label>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 질문 8 -->
+        <div class="survey-section">
+            <h3>얼굴이 차갑고 창백해 보이나요?</h3>
+            <ul>
+                <li>
+                    <label>
+                        <input type="radio" name="8" value="Y"> 어울린다
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" name="8" value="N"> 어울리지 않는다
+                    </label>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 질문 9 -->
+        <div class="survey-section">
+            <h3>따뜻한 빛이 얼굴을 부드럽게 보이게 하나요?</h3>
+            <ul>
+                <li>
+                    <label>
+                        <input type="radio" name="9" value="Y"> 어울린다
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" name="9" value="N"> 어울리지 않는다
+                    </label>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 질문 10 -->
+        <div class="survey-section">
+            <h3>어떤 계절에 잘 어울리나요?</h3>
+            <ul>
+                <li>
+                    <label>
+                        <input type="radio" name="10" value="SPRING_WARM"> 봄
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" name="10" value="SUMMER_COOL"> 여름
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" name="10" value="AUTUMN_WARM"> 가을
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="radio" name="10" value="WINTER_COOL"> 겨울
+                    </label>
+                </li>
+            </ul>
+        </div>
+
+        <button type="submit" class="button">제출</button>
+    </form>
+</div>
 
 </body>
 </html>
